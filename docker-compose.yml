@@ -1,0 +1,29 @@
+version: '3.4'
+services:
+  userify-server:
+    hostname: userify-server
+    build:
+      context: .
+    ports:
+      - "443:443"
+    depends_on:
+      - mariadb
+      - exim-sender
+      - redis
+    environment:
+      - LICENCE=${LICENCE}
+      - INSTALL_URL=https://releases.userify.com/dist/userify-pro-server.gz
+    tty: true
+#    volumes:
+#      - .:/opt/userify-server
+  mariadb:
+    hostname: mariadb
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=easydevelopment
+  exim-sender:
+    hostname: exim-sender
+    image: elsdoerfer/exim-sender
+  redis:
+    hostname: redis
+    image: redis

@@ -1,0 +1,24 @@
+(while true;
+do
+
+    chmod +x /opt/userify-server/userify-server
+
+    # userify automatically attempts to bind to 443 and 80
+    # (dropping permissions after startup)
+    # but will not produce an error unless it cannot bind
+    # HTTP to localhost:8120 or the port number specified here.
+
+    # For additional performance, use HA Proxy or nginx to:
+    #   proxy to localhost for /api/
+    #   static files to /opt/userify-server/web/
+
+    /opt/userify-server/userify-server server "8120"
+
+#    2>/dev/stderr >/dev/stdout
+
+#   2>&1 | tee -a /var/log/userify-server.log >(logger -t userify-server)
+
+    sleep 3
+
+done) &
+
