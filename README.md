@@ -7,19 +7,22 @@ Very much a work in progress
 ## Develop
 
 `docker-compose up --build`
+
 `docker-compose exec userify-server bash`
+
 When finished:
+
 `docker-compose down`
 
 ## Test
 
-
+WIP
 
 ## Build
 
 `docker build . -t local:userify-server --no-cache`
 
-## Deploy:
+## Deploy
 
 ### Enterprise
 
